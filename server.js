@@ -14,10 +14,17 @@ const mongoose = require('mongoose')
 // it takes the variable out from the .env file and passes to the server
 require('dotenv').config()
 
+// -- controllers
+const skatersController = require('./controllers/skaters.js')
+
+
 //============================
 //  GLOBAL CONFIGS
 //============================
+// variable for the express function
 const app = express()
+
+// variable for the mongoose connection
 const db = mongoose.connection
 
 //this is coming from the .env file set up earlier
@@ -38,6 +45,8 @@ app.use(express.urlencoded( {extended: false} ))
 // -- method override(for delete and put routes)
 app.use(methodOverride('_method'))
 
+//========= controllers middleware
+app.use('/skaters', skatersController)
 
 
 //============================
