@@ -52,6 +52,16 @@ router.get('/:id/skills/agility', (req, res) => {
   })
 })
 
+// -- edit teamwork
+router.get('/:id/skills/fitness', (req, res) => {
+  Skater.findById(req.params.id, (error, foundSkater) => {
+    res.render('skaters/skills/fitness.ejs',
+    {
+      skater: foundSkater
+    })
+  })
+})
+
 // ============== POST ROUTES ==============
 // -- CREATE(post) ROUTE
 // posting the info from the form on the route NEW
@@ -79,6 +89,22 @@ router.put('/:id/skills/agility', (req, res) => {
         powerSlide: req.body.powerSlide,
         transitions: req.body.transitions,
         backwardsSkating: req.body.backwardsSkating
+      }
+    }
+  }
+  Skater.findByIdAndUpdate(req.params.id, updatedValue, {new:true}, (error, updatedData) => {
+    res.send(updatedData)
+  })
+})
+
+
+// -- put route for fitness
+router.put('/:id/skills/fitness', (req, res) => {
+  const updatedValue = {
+    skills:{
+      fitness: {
+        speedEndurance: req.body.speedEndurance,
+        recovery: req.body.recovery,
       }
     }
   }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>fitness</h1>
+    <form  action="/skaters/<%=skater.id%>/skills/fitness?_method=PUT" method="post">
+      Speed & Endurance:<br>
+        1<input type="radio" name="speedEndurance" value="1"><br>
+        2<input type="radio" name="speedEndurance" value="2"><br>
+        3<input type="radio" name="speedEndurance" value="3"><br>
+        4<input type="radio" name="speedEndurance" value="4"><br>
+        5<input type="radio" name="speedEndurance" value="5"><br>
+      Recovery: <br>
+        1<input type="radio" name="recovery" value="1"><br>
+        2<input type="radio" name="recovery" value="2"><br>
+        3<input type="radio" name="recovery" value="3"><br>
+        4<input type="radio" name="recovery" value="4"><br>
+        5<input type="radio" name="recovery" value="5"><br>
+        <input type="submit" name="" value="save">
+    </form>
+  </body>
+</html>
