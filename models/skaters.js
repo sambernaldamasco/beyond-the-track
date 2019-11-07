@@ -10,21 +10,31 @@ const mongoose = require('mongoose')
 
 const skaterSchema = new mongoose.Schema({
   name:{type: String, unique: true},
-  lateralMovement: {type: Number, default: 1},
-  hockeyStop: {type: Number, default: 1},
-  plowStop: {type: Number, default: 1},
-  turningToeStop: {type: Number, default: 1},
-  powerSlide: {type: Number, default: 1},
-  transitions: {type: Number, default: 1},
-  lateralMovement: {type: Number, default: 1},
-  speedEndurance: {type: Number, default: 1},
-  recovery: {type: Number, default: 1},
-  packwork: {type: Number, default: 1},
-  strategyAdaptability: {type: Number, default: 1},
-  awarenessCommunication: {type: Number, default: 1},
-  proactiveness: {type: Number, default: 1},
-  mentalRecovery: {type: Number, default: 1},
-  sportspersonship: {type: Number, default: 1}
+  skills: {
+    agility:{
+      lateralMovement: {type: Number, default: 1},
+      hockeyStop: {type: Number, default: 1},
+      plowStop: {type: Number, default: 1},
+      turningToeStop: {type: Number, default: 1},
+      powerSlide: {type: Number, default: 1},
+      transitions: {type: Number, default: 1},
+      transitions: {type: Number, default: 1}
+    },
+    fitness:{
+      speedEndurance: {type: Number, default: 1},
+      recovery: {type: Number, default: 1},
+    },
+    teamwork:{
+      packwork: {type: Number, default: 1},
+      strategyAdaptability: {type: Number, default: 1},
+      awarenessCommunication: {type: Number, default: 1},
+    },
+    coachability: {
+      proactiveness: {type: Number, default: 1},
+      mentalRecovery: {type: Number, default: 1},
+      sportspersonship: {type: Number, default: 1}
+    }
+  }
 
 })
 
