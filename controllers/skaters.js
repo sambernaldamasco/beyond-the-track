@@ -82,7 +82,9 @@ router.put('/:id/skills/agility', (req, res) => {
       }
     }
   }
-  res.send(updatedValue)
+  Skater.findByIdAndUpdate(req.params.id, updatedValue, {new:true}, (error, updatedData) => {
+    res.send(updatedData)
+  })
 })
 
 module.exports = router
