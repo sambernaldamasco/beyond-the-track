@@ -79,20 +79,7 @@ router.post('/', (req, res) => {
 // adding data from the EDIT route
 // -- put route for agility
 router.put('/:id/skills/agility', (req, res) => {
-  const updatedValue = {
-    skills:{
-      agility: {
-        lateralMovement: req.body.lateralMovement,
-        hockeyStop: req.body.hockeyStop,
-        plowStop: req.body.plowStop,
-        turningToeStop: req.body.turningToeStop,
-        powerSlide: req.body.powerSlide,
-        transitions: req.body.transitions,
-        backwardsSkating: req.body.backwardsSkating
-      }
-    }
-  }
-  Skater.findByIdAndUpdate(req.params.id, updatedValue, {new:true}, (error, updatedData) => {
+  Skater.findByIdAndUpdate(req.params.id, {$set: {'skills.agility':req.body} }, {new:true}, (error, updatedData) => {
     res.send(updatedData)
   })
 })
@@ -100,15 +87,7 @@ router.put('/:id/skills/agility', (req, res) => {
 
 // -- put route for fitness
 router.put('/:id/skills/fitness', (req, res) => {
-  const updatedValue = {
-    skills:{
-      fitness: {
-        speedEndurance: req.body.speedEndurance,
-        recovery: req.body.recovery,
-      }
-    }
-  }
-  Skater.findByIdAndUpdate(req.params.id, updatedValue, {new:true}, (error, updatedData) => {
+  Skater.findByIdAndUpdate(req.params.id,{$set: {'skills.fitness':req.body} }, {new:true}, (error, updatedData) => {
     res.send(updatedData)
   })
 })
