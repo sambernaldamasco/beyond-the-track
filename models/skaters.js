@@ -18,7 +18,7 @@ const skaterSchema = new mongoose.Schema({
       turningToeStop: {type: Number, default: 1},
       powerSlide: {type: Number, default: 1},
       transitions: {type: Number, default: 1},
-      transitions: {type: Number, default: 1}
+      backwardsSkating: {type: Number, default: 1}
     },
     fitness:{
       speedEndurance: {type: Number, default: 1},
