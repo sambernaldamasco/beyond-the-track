@@ -52,10 +52,21 @@ router.get('/:id/skills/agility', (req, res) => {
   })
 })
 
-// -- edit teamwork
+// -- edit fitness
 router.get('/:id/skills/fitness', (req, res) => {
   Skater.findById(req.params.id, (error, foundSkater) => {
     res.render('skaters/skills/fitness.ejs',
+    {
+      skater: foundSkater
+    })
+  })
+})
+
+
+// -- edit teamwork
+router.get('/:id/skills/teamwork', (req, res) => {
+  Skater.findById(req.params.id, (error, foundSkater) => {
+    res.render('skaters/skills/teamwork.ejs',
     {
       skater: foundSkater
     })
@@ -88,6 +99,14 @@ router.put('/:id/skills/agility', (req, res) => {
 // -- put route for fitness
 router.put('/:id/skills/fitness', (req, res) => {
   Skater.findByIdAndUpdate(req.params.id,{$set: {'skills.fitness':req.body} }, {new:true}, (error, updatedData) => {
+    res.send(updatedData)
+  })
+})
+
+
+// -- put route for teamwork
+router.put('/:id/skills/teamwork', (req, res) => {
+  Skater.findByIdAndUpdate(req.params.id,{$set: {'skills.teamwork':req.body} }, {new:true}, (error, updatedData) => {
     res.send(updatedData)
   })
 })
