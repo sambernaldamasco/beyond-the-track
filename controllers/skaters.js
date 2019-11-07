@@ -16,7 +16,7 @@ const Skater = require('../models/skaters.js')
 //=====================
 // ============== GET ROUTES ==============
 router.get('/', (req, res) => {
-  res.send('this is index')
+  res.render('skaters/index.ejs')
 })
 
 router.get(':id', (req, res) => {
@@ -28,6 +28,14 @@ router.get('/new', (req, res) => {
 })
 
 
-
+// ============== POST ROUTES ==============
+// -- CREATE(post) ROUTE
+// posting the info from the form on the route NEW
+router.post('/', (req, res) => {
+  // res.send(req.body.name)
+  Skater.create(req.body, (error, createdSkater) => {
+  res.send(createdSkater)
+  })
+})
 
 module.exports = router
