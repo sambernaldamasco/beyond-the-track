@@ -73,6 +73,16 @@ router.get('/:id/skills/teamwork', (req, res) => {
   })
 })
 
+// -- edit coachability
+router.get('/:id/skills/coachability', (req, res) => {
+  Skater.findById(req.params.id, (error, foundSkater) => {
+    res.render('skaters/skills/coachability.ejs',
+    {
+      skater: foundSkater
+    })
+  })
+})
+
 // ============== POST ROUTES ==============
 // -- CREATE(post) ROUTE
 // posting the info from the form on the route NEW
@@ -107,6 +117,13 @@ router.put('/:id/skills/fitness', (req, res) => {
 // -- put route for teamwork
 router.put('/:id/skills/teamwork', (req, res) => {
   Skater.findByIdAndUpdate(req.params.id,{$set: {'skills.teamwork':req.body} }, {new:true}, (error, updatedData) => {
+    res.send(updatedData)
+  })
+})
+
+// -- put route for coachability
+router.put('/:id/skills/coachability', (req, res) => {
+  Skater.findByIdAndUpdate(req.params.id,{$set: {'skills.coachability':req.body} }, {new:true}, (error, updatedData) => {
     res.send(updatedData)
   })
 })
