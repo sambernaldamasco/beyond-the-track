@@ -17,6 +17,9 @@ require('dotenv').config()
 // -- controllers
 const skatersController = require('./controllers/skaters.js')
 
+const skillsController = require('./controllers/skills.js')
+
+
 
 //============================
 //  GLOBAL CONFIGS
@@ -47,6 +50,9 @@ app.use(methodOverride('_method'))
 
 //========= controllers middleware
 app.use('/skaters', skatersController)
+
+app.use('/skills', skillsController)
+
 
 
 //============================

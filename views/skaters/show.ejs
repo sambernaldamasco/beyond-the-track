@@ -36,6 +36,9 @@
       <li>Sportspersonship: <%=skater.skills.coachability.sportspersonship%></li>
     </ul>
 
-    <a href="/skaters/<%=skater.id%>/skills/agility">Asess Skater</a>
+    <form action="/skaters/<%=skater.id%>?_method=DELETE" method="POST">
+      <input type="submit" value="delete">
+    </form>
+    <a href="/skills/<%=skater.id%>/agility">Asess Skater</a>
   </body>
 </html>
