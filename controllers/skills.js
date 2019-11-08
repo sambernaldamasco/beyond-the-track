@@ -10,8 +10,8 @@ const router = express.Router()
 // -- db collection
 const Skater = require('../models/skaters.js')
 
-// -- app logic for averages
-const average = require('../models/averageLogic.js')
+// -- app logic
+const logic = require('../models/logic.js')
 
 
 //=====================
@@ -78,7 +78,7 @@ router.get('/:id/overview', (req, res) => {
     res.render('skaters/skills/overview.ejs',
     {
       skater: foundSkater,
-      average: average.total(foundSkater)
+      average: logic.average.total(foundSkater)
     })
   })
 })
