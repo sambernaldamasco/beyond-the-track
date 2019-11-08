@@ -1,7 +1,7 @@
 //=====================
 //  APP LOGIC
 //=====================
-module.exports = {
+const average = {
   agility (skater) {
     const stats = skater.skills.agility
     const skillLength = Object.keys(skater.skills.agility).length -1
@@ -54,12 +54,14 @@ module.exports = {
   },
 
   total (skater) {
-    const agilityAvg = agilityAverage(skater)
-    const fitnessAvg = fitnessAverage(skater)
-    const teamworkAvg = teamworkAverage(skater)
-    const coachabilityAvg = coachabilityAverage(skater)
+    const agilityAvg = average.agility(skater)
+    const fitnessAvg = average.fitness(skater)
+    const teamworkAvg = average.teamwork(skater)
+    const coachabilityAvg = average.coachability(skater)
     const totalAvg = Math.floor((agilityAvg + teamworkAvg + coachabilityAvg + fitnessAvg)/4)
 
     return {agility:agilityAvg, fitness:fitnessAvg, teamwork:teamworkAvg, coachability:coachabilityAvg, total:totalAvg}
   }
 }
+
+module.exports = average

@@ -75,7 +75,7 @@ router.get('/:id/coachability', (req, res) => {
 router.get('/:id/overview', (req, res) => {
   Skater.findById(req.params.id, (error, foundSkater) => {
 
-    console.log(average.agility(foundSkater));
+    console.log(average.total(foundSkater));
     res.render('skaters/skills/overview.ejs',
     {
       skater: foundSkater
