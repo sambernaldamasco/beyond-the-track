@@ -10,6 +10,12 @@ const methodOverride = require('method-override')
 // -- mongoose
 const mongoose = require('mongoose')
 
+// -- bcrypt
+const bcrypt = require('bcrypt')
+
+// -- session
+const session = require('express-session')
+
 // -- requiring the .env file
 // it takes the variable out from the .env file and passes to the server
 require('dotenv').config()
@@ -59,7 +65,7 @@ app.use('/skills', skillsController)
 //  ROUTES
 //============================
 app.get('/', (req, res) => {
-  res.send('hello world')
+  res.render('home.ejs')
 })
 
 
