@@ -5,7 +5,63 @@
     <title></title>
   </head>
   <body>
-    <h1>this is overview</h1>
-    
+    <h1>this is overview for <%= skater.name %></h1>
+    <h1>Exceptional at:</h1>
+    <% if(average.agility === 5) {%>
+      <h2>Agility</h2>
+    <%}%>
+
+    <% if(average.fitness === 5) {%>
+      <h2>Fitness</h2>
+    <%}%>
+
+    <% if(average.teamwork === 5) {%>
+      <h2>Teamwork</h2>
+    <%}%>
+
+    <% if(average.coachability === 5) {%>
+      <h2>Coachability</h2>
+    <%}%>
+
+    <h1>Good at:</h1>
+    <% if(average.agility >= 3) {%>
+      <h2>Agility</h2>
+    <%}%>
+
+    <% if(average.fitness >= 3) {%>
+      <h2>Fitness</h2>
+    <%}%>
+
+    <% if(average.teamwork >= 3) {%>
+      <h2>Teamwork</h2>
+    <%}%>
+
+    <% if(average.coachability >= 3) {%>
+      <h2>Coachability</h2>
+    <%}%>
+
+    <h1>Needs work:</h1>
+    <% if(average.agility < 3) {%>
+      <h2>Agility</h2>
+    <%}%>
+
+    <% if(average.fitness < 3) {%>
+      <h2>Fitness</h2>
+    <%}%>
+
+    <% if(average.teamwork < 3) {%>
+      <h2>Teamwork</h2>
+    <%}%>
+
+    <% if(average.coachability < 3) {%>
+      <h2>Coachability</h2>
+    <%}%>
+
+    <% if(average.total >= 3) {%>
+      <a href="/skills/<%=skater.id%>/accepted">Add to the team</a>
+    <%} %>
+    <a href="/skills/<%=skater.id%>/dismiss">Dismiss skater</a>
+
+
   </body>
 </html>

@@ -74,11 +74,11 @@ router.get('/:id/coachability', (req, res) => {
 // -- show overview after asessing coachability
 router.get('/:id/overview', (req, res) => {
   Skater.findById(req.params.id, (error, foundSkater) => {
-
     console.log(average.total(foundSkater));
     res.render('skaters/skills/overview.ejs',
     {
-      skater: foundSkater
+      skater: foundSkater,
+      average: average.total(foundSkater)
     })
   })
 })
@@ -117,5 +117,19 @@ router.put('/:id/coachability', (req, res) => {
   })
 })
 
+
+// -- route for adding to the team
+router.get('/:id/accepted', (req, res) => {
+  Skater.findByIdAndUpdate(req.params.id, {accepted:true}, {new:true}, (error, updatedData) => {
+    res.send(updatedData)
+  })
+})
+
+// -- route for rejecting the skater to the team
+router.get('/:id/dismiss', (req, res) => {
+  Skater.findByIdAndUpdate(req.params.id, {accepted:false}, {new:true}, (error, updatedData) => {
+    res.send(updatedData)
+  })
+})
 
 module.exports = router
