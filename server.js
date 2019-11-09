@@ -84,7 +84,11 @@ app.use('/sessions', sessionsController)
 //  ROUTES
 //============================
 app.get('/', (req, res) => {
-  res.render('home.ejs')
+  if (req.session.username) {
+    res.render('main.ejs')
+  } else {
+    res.render('home.ejs')
+  }
 })
 
 app.get('/admin', (req, res) => {

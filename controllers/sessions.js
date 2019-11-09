@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
       //checking if the pw is a good guess(a match) with bcrypt
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.username = foundUser.username;
-        res.redirect("/skaters");
+        res.redirect("/");
       } else {
         res.redirect("/sessions/new");
       }
