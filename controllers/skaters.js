@@ -19,15 +19,16 @@ const logic = require("../models/logic.js");
 // ============== GET ROUTES ==============
 // -- index route
 router.get("/", (req, res) => {
-  if (req.session.username) {
-    Skater.find({}, (error, query) => {
-      res.render("skaters/index.ejs", {
-        skaters: query
-      });
+if (req.session.username) {
+  Skater.find({}, (error, query) => {
+    res.render("skaters/index.ejs", {
+      skaters: query
     });
-  } else {
-    res.rediect('/sessions/accessdenied')
-  }
+  });
+} else {
+  res.redirect("/sessions/accessdenied");
+}
+
 });
 
 // -- new route
@@ -45,7 +46,7 @@ router.get("/:id", (req, res) => {
       });
     });
   } else {
-    res.rediect('/sessions/accessdenied')
+    res.redirect('/sessions/accessdenied')
   }
 });
 

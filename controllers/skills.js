@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
       });
     });
   } else {
-    res.rediect('/sessions/accessdenied')
+    res.redirect('/sessions/accessdenied')
   }
 
 });
@@ -34,15 +34,16 @@ router.get("/", (req, res) => {
 // ================== edit routes
 // -- edit agility
 router.get("/:id/agility", (req, res) => {
-  if (req.session.username) {
-    Skater.findById(req.params.id, (error, foundSkater) => {
-      res.render("skaters/skills/agility.ejs", {
-        skater: foundSkater
-      });
+if (req.session.username) {
+  Skater.findById(req.params.id, (error, foundSkater) => {
+    res.render("skaters/skills/agility.ejs", {
+      skater: foundSkater
     });
-  } else {
-    res.rediect('/sessions/accessdenied')
-  }
+  });
+} else {
+  res.redirect("/sessions/accessdenied");
+}
+
 });
 
 // -- edit fitness
@@ -54,7 +55,7 @@ router.get("/:id/fitness", (req, res) => {
       });
     });
   } else {
-    res.rediect('/sessions/accessdenied')
+    res.redirect('/sessions/accessdenied')
   }
 });
 
@@ -67,7 +68,7 @@ router.get("/:id/teamwork", (req, res) => {
       });
     });
   } else {
-    res.rediect('/sessions/accessdenied')
+    res.redirect('/sessions/accessdenied')
   }
 });
 
@@ -80,7 +81,7 @@ router.get("/:id/coachability", (req, res) => {
       });
     });
   } else {
-    res.rediect('/sessions/accessdenied')
+    res.redirect('/sessions/accessdenied')
   }
 
 });
@@ -96,7 +97,7 @@ router.get("/:id/overview", (req, res) => {
       });
     });
   } else {
-    res.rediect('/sessions/accessdenied')
+    res.redirect('/sessions/accessdenied')
   }
 });
 

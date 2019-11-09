@@ -18,18 +18,16 @@ const logic = require("../models/logic.js");
 //=====================
 // ============== GET ROUTES ==============
 // -- index
-router.get('/', (req, res) => {
-  Skater.find({accepted: true}, null, (error, query) => {
-    res.render('skaters/team/index.ejs',
-    {
-      skaters: query
-    })
-  })
-})
-
-
-
-
-
+router.get("/", (req, res) => {
+  if (req.session.username) {
+    Skater.find({ accepted: true }, null, (error, query) => {
+      res.render("skaters/team/index.ejs", {
+        skaters: query
+      });
+    });
+  } else {
+    res.redirect("/sessions/accessdenied");
+  }
+});
 
 module.exports = router;
