@@ -21,6 +21,10 @@ router.get('/new', (req, res) => {
     res.render('sessions/new.ejs')
 })
 
+router.get('/accessdenied', (req, res) => {
+    res.render('sessions/accessdenied.ejs')
+})
+
 router.post('/', (req, res) => {
   User.findOne({username: req.body.username}, (error, foundUser) => {
     //checking if the user was found/exists

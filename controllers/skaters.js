@@ -19,25 +19,34 @@ const logic = require("../models/logic.js");
 // ============== GET ROUTES ==============
 // -- index route
 router.get("/", (req, res) => {
-  Skater.find({}, (error, query) => {
-    res.render("skaters/index.ejs", {
-      skaters: query
+  if (req.session.username) {
+    Skater.find({}, (error, query) => {
+      res.render("skaters/index.ejs", {
+        skaters: query
+      });
     });
-  });
+  } else {
+    res.rediect('/sessions/accessdenied')
+  }
 });
 
 // -- new route
+// not session protected so new skaters can add themselves for tryouts
 router.get("/new", (req, res) => {
   res.render("skaters/new.ejs");
 });
 
 // -- show route
 router.get("/:id", (req, res) => {
-  Skater.findById(req.params.id, (error, foundSkater) => {
-    res.render("skaters/show.ejs", {
-      skater: foundSkater
+  if (req.session.username) {
+    Skater.findById(req.params.id, (error, foundSkater) => {
+      res.render("skaters/show.ejs", {
+        skater: foundSkater
+      });
     });
-  });
+  } else {
+    res.rediect('/sessions/accessdenied')
+  }
 });
 
 // ============== POST ROUTES ==============
