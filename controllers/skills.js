@@ -121,6 +121,7 @@ router.put("/:id/coachability", (req, res) => {
     { new: true },
     (error, updatedData) => {
       res.redirect("/skills/" + updatedData.id + "/overview");
+      console.log(updatedData);
     }
   );
 });

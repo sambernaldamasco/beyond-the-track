@@ -6,5 +6,10 @@
   </head>
   <body>
     <h1>this is the team page</h1>
+    <ul>
+      <% for(let i =0; i < skaters.length; i++){%>
+        <li><a href="/skaters/<%=skaters[i].id%>"><%=skaters[i].name%></a></li>
+      <%}%>
+    </ul>
   </body>
 </html>

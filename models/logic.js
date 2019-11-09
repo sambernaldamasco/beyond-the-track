@@ -96,7 +96,11 @@ const logic = {
         }
       }
     return data
-    } // end of the function
+    }, // end of the function
+
+    // dataCheck (data) = {
+    //
+    // }
   } //end of the dataManipulation object
 }
 

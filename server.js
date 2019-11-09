@@ -25,6 +25,8 @@ const skatersController = require('./controllers/skaters.js')
 
 const skillsController = require('./controllers/skills.js')
 
+const teamController = require('./controllers/team.js')
+
 
 
 //============================
@@ -58,6 +60,9 @@ app.use(methodOverride('_method'))
 app.use('/skaters', skatersController)
 
 app.use('/skills', skillsController)
+
+app.use('/team', teamController)
+
 
 
 
