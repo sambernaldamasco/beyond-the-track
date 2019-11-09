@@ -27,6 +27,9 @@ const skillsController = require('./controllers/skills.js')
 
 const teamController = require('./controllers/team.js')
 
+const usersController = require('./controllers/users.js')
+
+const sessionsController = require('./controllers/sessions.js')
 
 
 //============================
@@ -56,6 +59,15 @@ app.use(express.urlencoded( {extended: false} ))
 // -- method override(for delete and put routes)
 app.use(methodOverride('_method'))
 
+// -- adding the section middleware
+// it's a function, it takes a secret, a random string.
+// resave, and saveUnitialized
+app.use(session({
+  secret: 'fightfightfight',
+  resave: false,
+  saveUninitialized: false
+}))
+
 //========= controllers middleware
 app.use('/skaters', skatersController)
 
@@ -63,7 +75,9 @@ app.use('/skills', skillsController)
 
 app.use('/team', teamController)
 
+app.use('/users', usersController)
 
+app.use('/sessions', sessionsController)
 
 
 //============================
