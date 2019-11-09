@@ -7,8 +7,10 @@
   <body>
     <h1>new user page</h1>
     <form action="/users" method="POST">
-      invitation code: <input type="text" name="inviteCode"><br>
-      username: <input type="text" name="username"><br>
+      invitation code: <input type="text" name="inviteCode" value="<%=code%>">
+      <span>invitation code invalid</span>
+      <br>
+      username: <input type="text" name="username" value="<%=username%>"><br>
       password: <input type="password" name="password"><br>
       <input type="submit" value="register">
     </form>

@@ -13,7 +13,8 @@ const User = require('../models/users.js')
 // -- bcrypt
 const bcrypt = require('bcrypt')
 
-
+// -- invite code variable
+const invite = 'PRD2020'
 //=====================
 //  ROUTES
 //=====================
@@ -26,11 +27,20 @@ router.get('/new', (req, res) => {
 // ============== POST ROUTES ==============
 router.post('/', (req, res) => {
   // encrypting the password with bcrypt
-  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-  User.create(req.body, (error, createdUser) => {
-    req.session.username = createdUser.username
-    res.redirect('/skaters')
-  })
+  if (req.body.inviteCode === invite) {
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+    User.create(req.body, (error, createdUser) => {
+      req.session.username = createdUser.username
+      res.redirect('/skaters')
+    })
+  } else {
+    res.render('users/codeInvalid.ejs',
+    {
+      code: req.body.inviteCode,
+      username: req.body.username
+    })
+  }
+
 })
 
 module.exports = router
