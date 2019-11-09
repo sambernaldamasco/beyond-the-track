@@ -5,26 +5,63 @@
     <title></title>
   </head>
   <body>
+    <!-- adding subnav for assessments -->
+    <% include ../../partials/skillsnav.ejs %>
     <h1>fitness</h1>
     <form  action="/skills/<%=skater.id%>/teamwork?_method=PUT" method="post">
       Pack Work:<br>
-        1<input type="radio" name="packwork" value="1"><br>
-        2<input type="radio" name="packwork" value="2"><br>
-        3<input type="radio" name="packwork" value="3"><br>
-        4<input type="radio" name="packwork" value="4"><br>
-        5<input type="radio" name="packwork" value="5"><br>
+      <table>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+        </tr>
+        <tr>
+          <td> <input type="radio" name="packwork" value="1"> </td>
+          <td> <input type="radio" name="packwork" value="2"> </td>
+          <td> <input type="radio" name="packwork" value="3"> </td>
+          <td> <input type="radio" name="packwork" value="4"> </td>
+          <td> <input type="radio" name="packwork" value="5"> </td>
+        </tr>
+      </table>
+
       Stragery and Adaptability: <br>
-        1<input type="radio" name="strategyAdaptability" value="1"><br>
-        2<input type="radio" name="strategyAdaptability" value="2"><br>
-        3<input type="radio" name="strategyAdaptability" value="3"><br>
-        4<input type="radio" name="strategyAdaptability" value="4"><br>
-        5<input type="radio" name="strategyAdaptability" value="5"><br>
+      <table>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+        </tr>
+        <tr>
+          <td> <input type="radio" name="strategyAdaptability" value="1"> </td>
+          <td> <input type="radio" name="strategyAdaptability" value="2"> </td>
+          <td> <input type="radio" name="strategyAdaptability" value="3"> </td>
+          <td> <input type="radio" name="strategyAdaptability" value="4"> </td>
+          <td> <input type="radio" name="strategyAdaptability" value="5"> </td>
+        </tr>
+      </table>
+
       Awareness and Communication: <br>
-        1<input type="radio" name="awarenessCommunication" value="1"><br>
-        2<input type="radio" name="awarenessCommunication" value="2"><br>
-        3<input type="radio" name="awarenessCommunication" value="3"><br>
-        4<input type="radio" name="awarenessCommunication" value="4"><br>
-        5<input type="radio" name="awarenessCommunication" value="5"><br>
+      <table>
+        <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+        </tr>
+        <tr>
+          <td> <input type="radio" name="awarenessCommunication" value="1"> </td>
+          <td> <input type="radio" name="awarenessCommunication" value="2"> </td>
+          <td> <input type="radio" name="awarenessCommunication" value="3"> </td>
+          <td> <input type="radio" name="awarenessCommunication" value="4"> </td>
+          <td> <input type="radio" name="awarenessCommunication" value="5"> </td>
+        </tr>
+      </table>
         <input type="submit" name="" value="save">
     </form>
   </body>

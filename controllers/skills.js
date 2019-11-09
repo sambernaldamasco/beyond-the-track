@@ -2,134 +2,151 @@
 // DEPENDENCIES
 //==========================
 // -- express server
-const express = require('express')
+const express = require("express");
 
 //-- adding the router
-const router = express.Router()
+const router = express.Router();
 
 // -- db collection
-const Skater = require('../models/skaters.js')
+const Skater = require("../models/skaters.js");
 
 // -- app logic
-const logic = require('../models/logic.js')
-
+const logic = require("../models/logic.js");
 
 //=====================
 //  ROUTES
 //=====================
 // ============== GET ROUTES ==============
 // -- index route redirects to skaters index page
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   Skater.find({}, (error, query) => {
-    res.render('skaters/index.ejs',
-    {
+    res.render("skaters/index.ejs", {
       skaters: query
-    })
-
-  })
-})
+    });
+  });
+});
 
 // ================== edit routes
 // -- edit agility
-router.get('/:id/agility', (req, res) => {
+router.get("/:id/agility", (req, res) => {
   Skater.findById(req.params.id, (error, foundSkater) => {
-    res.render('skaters/skills/agility.ejs',
-    {
+    res.render("skaters/skills/agility.ejs", {
       skater: foundSkater
-    })
-  })
-})
+    });
+  });
+});
 
 // -- edit fitness
-router.get('/:id/fitness', (req, res) => {
+router.get("/:id/fitness", (req, res) => {
   Skater.findById(req.params.id, (error, foundSkater) => {
-    res.render('skaters/skills/fitness.ejs',
-    {
+    res.render("skaters/skills/fitness.ejs", {
       skater: foundSkater
-    })
-  })
-})
-
+    });
+  });
+});
 
 // -- edit teamwork
-router.get('/:id/teamwork', (req, res) => {
+router.get("/:id/teamwork", (req, res) => {
   Skater.findById(req.params.id, (error, foundSkater) => {
-    res.render('skaters/skills/teamwork.ejs',
-    {
+    res.render("skaters/skills/teamwork.ejs", {
       skater: foundSkater
-    })
-  })
-})
+    });
+  });
+});
 
 // -- edit coachability
-router.get('/:id/coachability', (req, res) => {
+router.get("/:id/coachability", (req, res) => {
   Skater.findById(req.params.id, (error, foundSkater) => {
-    res.render('skaters/skills/coachability.ejs',
-    {
+    res.render("skaters/skills/coachability.ejs", {
       skater: foundSkater
-    })
-  })
-})
+    });
+  });
+});
 
 // -- show overview after asessing coachability
-router.get('/:id/overview', (req, res) => {
+router.get("/:id/overview", (req, res) => {
   Skater.findById(req.params.id, (error, foundSkater) => {
-    console.log(average.total(foundSkater));
-    res.render('skaters/skills/overview.ejs',
-    {
+    console.log(logic.average.total(foundSkater));
+    res.render("skaters/skills/overview.ejs", {
       skater: foundSkater,
       average: logic.average.total(foundSkater)
-    })
-  })
-})
-
+    });
+  });
+});
 
 // ============== PUT ROUTES ==============
 // -- UPDATE(put) ROUTE
 // adding data from the EDIT route
 // -- put route for agility
-router.put('/:id/agility', (req, res) => {
-  Skater.findByIdAndUpdate(req.params.id, {$set: {'skills.agility':req.body} }, {new:true}, (error, updatedData) => {
-    res.redirect('/skills/'+updatedData.id+'/fitness')
-  })
-})
-
+router.put("/:id/agility", (req, res) => {
+  Skater.findByIdAndUpdate(
+    req.params.id,
+    { $set: { "skills.agility": req.body } },
+    { new: true },
+    (error, updatedData) => {
+      res.redirect("/skills/" + updatedData.id + "/fitness");
+    }
+  );
+});
 
 // -- put route for fitness
-router.put('/:id/fitness', (req, res) => {
-  Skater.findByIdAndUpdate(req.params.id,{$set: {'skills.fitness':req.body} }, {new:true}, (error, updatedData) => {
-    res.redirect('/skills/'+updatedData.id+'/teamwork')
-  })
-})
-
+router.put("/:id/fitness", (req, res) => {
+  Skater.findByIdAndUpdate(
+    req.params.id,
+    { $set: { "skills.fitness": req.body } },
+    { new: true },
+    (error, updatedData) => {
+      res.redirect("/skills/" + updatedData.id + "/teamwork");
+    }
+  );
+});
 
 // -- put route for teamwork
-router.put('/:id/teamwork', (req, res) => {
-  Skater.findByIdAndUpdate(req.params.id,{$set: {'skills.teamwork':req.body} }, {new:true}, (error, updatedData) => {
-    res.redirect('/skills/'+updatedData.id+'/coachability')
-  })
-})
+router.put("/:id/teamwork", (req, res) => {
+  Skater.findByIdAndUpdate(
+    req.params.id,
+    { $set: { "skills.teamwork": req.body } },
+    { new: true },
+    (error, updatedData) => {
+      res.redirect("/skills/" + updatedData.id + "/coachability");
+    }
+  );
+});
 
 // -- put route for coachability
-router.put('/:id/coachability', (req, res) => {
-  Skater.findByIdAndUpdate(req.params.id,{$set: {'skills.coachability':req.body} }, {new:true}, (error, updatedData) => {
-    res.redirect('/skills/'+updatedData.id+'/overview')
-  })
-})
-
+router.put("/:id/coachability", (req, res) => {
+  Skater.findByIdAndUpdate(
+    req.params.id,
+    { $set: { "skills.coachability": req.body } },
+    { new: true },
+    (error, updatedData) => {
+      res.redirect("/skills/" + updatedData.id + "/overview");
+    }
+  );
+});
 
 // -- route for adding to the team
-router.get('/:id/accepted', (req, res) => {
-  Skater.findByIdAndUpdate(req.params.id, {accepted:true}, {new:true}, (error, updatedData) => {
-    res.send(updatedData)
-  })
-})
+router.get("/:id/accepted", (req, res) => {
+  Skater.findByIdAndUpdate(
+    req.params.id,
+    { accepted: true },
+    { new: true },
+    (error, updatedData) => {
+      res.send(updatedData);
+    }
+  );
+});
 
 // -- route for rejecting the skater to the team
-router.get('/:id/dismiss', (req, res) => {
-  Skater.findByIdAndUpdate(req.params.id, {accepted:false}, {new:true}, (error, updatedData) => {
-    res.send(updatedData)
-  })
-})
+router.get("/:id/dismiss", (req, res) => {
+  Skater.findByIdAndUpdate(
+    req.params.id,
+    { accepted: false },
+    { new: true },
+    (error, updatedData) => {
+      res.send(updatedData);
+    }
+  );
+});
 
-module.exports = router
+module.exports = router;

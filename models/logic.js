@@ -55,10 +55,10 @@ const logic = {
     },
 
     total (skater) {
-      const agilityAvg = average.agility(skater)
-      const fitnessAvg = average.fitness(skater)
-      const teamworkAvg = average.teamwork(skater)
-      const coachabilityAvg = average.coachability(skater)
+      const agilityAvg = logic.average.agility(skater)
+      const fitnessAvg = logic.average.fitness(skater)
+      const teamworkAvg = logic.average.teamwork(skater)
+      const coachabilityAvg = logic.average.coachability(skater)
       const totalAvg = Math.floor((agilityAvg + teamworkAvg + coachabilityAvg + fitnessAvg)/4)
 
       return {agility:agilityAvg, fitness:fitnessAvg, teamwork:teamworkAvg, coachability:coachabilityAvg, total:totalAvg}

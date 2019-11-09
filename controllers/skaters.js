@@ -2,70 +2,64 @@
 // DEPENDENCIES
 //==========================
 // -- express server
-const express = require('express')
+const express = require("express");
 
 //-- adding the router
-const router = express.Router()
+const router = express.Router();
 
 // -- db collection
-const Skater = require('../models/skaters.js')
+const Skater = require("../models/skaters.js");
 
 // -- app logic
-const logic = require('../models/logic.js')
+const logic = require("../models/logic.js");
 
 //=====================
 //  ROUTES
 //=====================
 // ============== GET ROUTES ==============
 // -- index route
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   Skater.find({}, (error, query) => {
-    res.render('skaters/index.ejs',
-    {
+    res.render("skaters/index.ejs", {
       skaters: query
-    })
-
-  })
-})
+    });
+  });
+});
 
 // -- new route
-router.get('/new', (req, res) => {
-  res.render('skaters/new.ejs')
-})
+router.get("/new", (req, res) => {
+  res.render("skaters/new.ejs");
+});
 
 // -- show route
-router.get('/:id', (req, res) => {
+router.get("/:id", (req, res) => {
   Skater.findById(req.params.id, (error, foundSkater) => {
-    res.render('skaters/show.ejs',
-    {
+    res.render("skaters/show.ejs", {
       skater: foundSkater
-    })
-  })
-})
-
-
+    });
+  });
+});
 
 // ============== POST ROUTES ==============
 // -- CREATE(post) ROUTE
 // posting the info from the form on the route NEW
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   // res.send(req.body.name)
-  if (req.body.veteran === 'on') {
-    req.body = logic.dataManipulation.veteranSkater(req.body)
+  if (req.body.veteran === "on") {
+    req.body = logic.dataManipulation.veteranSkater(req.body);
   }
   // res.send(req.body)
   Skater.create(req.body, (error, createdSkater) => {
-  res.send(createdSkater)
-  })
-})
+    res.send(createdSkater);
+  });
+});
 
 // ============== DESTROY ROUTES ==============
 // it takes the ID from the url send in the form+submit button
-router.delete('/:id', (req, res) => {
+router.delete("/:id", (req, res) => {
   Skater.findByIdAndRemove(req.params.id, (error, deletedData) => {
-    res.redirect('/skaters')
-  })
-})
+    res.redirect("/skaters");
+  });
+});
 
-
-module.exports = router
+module.exports = router;
