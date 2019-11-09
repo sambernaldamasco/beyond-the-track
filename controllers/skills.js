@@ -19,59 +19,85 @@ const logic = require("../models/logic.js");
 // ============== GET ROUTES ==============
 // -- index route redirects to skaters index page
 router.get("/", (req, res) => {
-  Skater.find({}, (error, query) => {
-    res.render("skaters/index.ejs", {
-      skaters: query
+  if (req.session.username) {
+    Skater.find({}, (error, query) => {
+      res.render("skaters/index.ejs", {
+        skaters: query
+      });
     });
-  });
+  } else {
+    res.rediect('/sessions/accessdenied')
+  }
+
 });
 
 // ================== edit routes
 // -- edit agility
 router.get("/:id/agility", (req, res) => {
-  Skater.findById(req.params.id, (error, foundSkater) => {
-    res.render("skaters/skills/agility.ejs", {
-      skater: foundSkater
+  if (req.session.username) {
+    Skater.findById(req.params.id, (error, foundSkater) => {
+      res.render("skaters/skills/agility.ejs", {
+        skater: foundSkater
+      });
     });
-  });
+  } else {
+    res.rediect('/sessions/accessdenied')
+  }
 });
 
 // -- edit fitness
 router.get("/:id/fitness", (req, res) => {
-  Skater.findById(req.params.id, (error, foundSkater) => {
-    res.render("skaters/skills/fitness.ejs", {
-      skater: foundSkater
+  if (req.session.username) {
+    Skater.findById(req.params.id, (error, foundSkater) => {
+      res.render("skaters/skills/fitness.ejs", {
+        skater: foundSkater
+      });
     });
-  });
+  } else {
+    res.rediect('/sessions/accessdenied')
+  }
 });
 
 // -- edit teamwork
 router.get("/:id/teamwork", (req, res) => {
-  Skater.findById(req.params.id, (error, foundSkater) => {
-    res.render("skaters/skills/teamwork.ejs", {
-      skater: foundSkater
+  if (req.session.username) {
+    Skater.findById(req.params.id, (error, foundSkater) => {
+      res.render("skaters/skills/teamwork.ejs", {
+        skater: foundSkater
+      });
     });
-  });
+  } else {
+    res.rediect('/sessions/accessdenied')
+  }
 });
 
 // -- edit coachability
 router.get("/:id/coachability", (req, res) => {
-  Skater.findById(req.params.id, (error, foundSkater) => {
-    res.render("skaters/skills/coachability.ejs", {
-      skater: foundSkater
+  if (req.session.username) {
+    Skater.findById(req.params.id, (error, foundSkater) => {
+      res.render("skaters/skills/coachability.ejs", {
+        skater: foundSkater
+      });
     });
-  });
+  } else {
+    res.rediect('/sessions/accessdenied')
+  }
+
 });
 
 // -- show overview after asessing coachability
 router.get("/:id/overview", (req, res) => {
-  Skater.findById(req.params.id, (error, foundSkater) => {
-    console.log(logic.average.total(foundSkater));
-    res.render("skaters/skills/overview.ejs", {
-      skater: foundSkater,
-      average: logic.average.total(foundSkater)
+  if (req.session.username) {
+    Skater.findById(req.params.id, (error, foundSkater) => {
+      console.log(logic.average.total(foundSkater));
+      res.render("skaters/skills/overview.ejs", {
+        skater: foundSkater,
+        average: logic.average.total(foundSkater)
+      });
     });
-  });
+  } else {
+    res.rediect('/sessions/accessdenied')
+  }
 });
 
 // ============== PUT ROUTES ==============
