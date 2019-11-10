@@ -15,10 +15,10 @@
         </div>
 
         <div class="column is-10">
-          <h1 class="title">fitness</h1>
+          <h1 class="title">coachability</h1>
           <form  action="/skills/<%=skater.id%>/coachability?_method=PUT" method="post">
             Proactiveness:<br>
-            <table>
+            <table class="table">
               <tr>
                 <th>1</th>
                 <th>2</th>
@@ -33,10 +33,10 @@
                 <td> <input type="radio" name="proactiveness" value="4"> </td>
                 <td> <input type="radio" name="proactiveness" value="5"> </td>
               </tr>
-            </table>
+            </table class="table">
 
             Mental Recovery: <br>
-            <table>
+            <table class="table">
               <tr>
                 <th>1</th>
                 <th>2</th>
@@ -54,7 +54,7 @@
             </table>
 
             Sportspersonship: <br>
-            <table>
+            <table class="table">
               <tr>
                 <th>1</th>
                 <th>2</th>
@@ -71,7 +71,7 @@
               </tr>
             </table>
 
-              <input type="submit" name="" value="save">
+              <input class="button is-dark" type="submit" name="" value="save">
           </form>
         </div>
       </div>
