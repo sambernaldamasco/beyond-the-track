@@ -3,33 +3,70 @@
   <!-- adding head from partials -->
   <% include ./partials/head.ejs %>
   <body>
-    <section class="hero is-dark is-large has-bg-img">
-      <div class="hero-body">
-        <div class="container has-text-right">
-          <h1 class="title">
-            Large title
-          </h1>
+    <section class="hero is-dark is-large has-background">
+      <img class="hero-background is-transparent" src="https://rainycityrollerderby.com/wp-content/themes/pstheme/assets/img_min/track.png" alt="track img">
 
+      <div class="hero-head">
+        <div class="navbar">
+          <div class="container">
+
+            <div class="navbar-menu">
+              <div class="navbar-end">
+                <a class="navbar-item" href="/admin">
+                  for admins
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title is-size-1">
+            beyond the track
+          </h1>
           <h2 class="subtitle">
-            Large subtitle
+            beyond the track is a small tool to help derby leagues thrive during tryouts season
           </h2>
         </div>
       </div>
+
     </section>
-    <h2>hello there</h2>
-    <p>beyond the track is a small tool to help derby leagues thrive during tryouts season </p>
-    <div>
-      ready to join a world class travel team?
-      <a href="/skaters/new">sign up for tryouts</a>
-    </div>
 
-    <div>
-      already signed up?
-      <a href="/skaters/new">check my status</a>
-    </div>
+    <section class="section has-text-centered">
+      <div class="container">
+        <h1 class="title">ready to join us?</h1>
 
-    <footer>
-        <a href="/admin">for admins</a>
+        <div class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">new here?</p>
+              <a class="button is-dark is-outlined is-large"href="/skaters/new">sign up for tryouts</a>
+            </div>
+          </div>
+
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">coming back?</p>
+              <a class="button is-dark is-outlined is-large"href="/skaters/new">check my tryouts status</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>beyond the track</strong> made with love by <a href="http://github.com/sambernaldamasco">Sam Bernal-Damasco</a>
+        </p>
+
+      </div>
     </footer>
+
   </body>
 </html>

@@ -3,11 +3,37 @@
   <!-- adding head from partials -->
   <% include ../partials/head.ejs %>
   <body>
-    <h1>add a new skater</h1>
-    <form action="/skaters" method="post">
-      skater name: <input type="text" name="name">
-      returning skater <input type="checkbox" name="veteran">
-      <input type="submit" value="submit">
-    </form>
+    <!-- adding publicnav partials -->
+    <% include ../partials/publicnav.ejs %>
+    <section class="section">
+      <div class="container">
+        <h1 class="title"> sign up</h1>
+
+        <form action="/skaters" method="post">
+          <div class="field">
+            <div class="control">
+              <input class="input is-medium is-hovered" type="text" name="name" placeholder="skater name">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="checkbox is-medium">
+              <input type="checkbox" name="veteran">
+              I am a returning skater
+            </label>
+          </div>
+
+
+          <div class="field">
+            <div class="control">
+              <input class="button"type="submit" value="submit">
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+
   </body>
 </html>
