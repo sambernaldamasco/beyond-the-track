@@ -3,8 +3,14 @@
   <!-- adding head from partials -->
   <% include ../../partials/head.ejs %>
   <body>
+    <!-- adding privatenav partials -->
+    <% include ../../partials/privatenav.ejs %>
+    <!-- nav -->
+
     <!-- adding subnav for assessments -->
     <% include ../partials/skillsnav.ejs %>
+    <!-- subnav -->
+    
     <h1>fitness</h1>
     <form  action="/skills/<%=skater.id%>/teamwork?_method=PUT" method="post">
       Pack Work:<br>

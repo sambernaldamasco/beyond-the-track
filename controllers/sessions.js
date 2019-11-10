@@ -24,6 +24,13 @@ router.get("/accessdenied", (req, res) => {
   res.render("sessions/accessdenied.ejs");
 });
 
+router.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/')
+  })
+});
+
+
 router.post("/", (req, res) => {
   User.findOne({ username: req.body.username }, (error, foundUser) => {
     //checking if the user was found/exists
