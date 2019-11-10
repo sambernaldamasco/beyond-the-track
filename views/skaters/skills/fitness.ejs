@@ -6,48 +6,59 @@
     <!-- adding privatenav partials -->
     <% include ../../partials/privatenav.ejs %>
     <!-- nav -->
-    
-    <!-- adding subnav for assessments -->
-    <% include ../partials/skillsnav.ejs %>
-    <h1>fitness</h1>
-    <form  action="/skills/<%=skater.id%>/fitness?_method=PUT" method="post">
-      Speed & Endurance:<br>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-        </tr>
-        <tr>
-          <td> <input type="radio" name="speedEndurance" value="1"> </td>
-          <td> <input type="radio" name="speedEndurance" value="2"> </td>
-          <td> <input type="radio" name="speedEndurance" value="3"> </td>
-          <td> <input type="radio" name="speedEndurance" value="4"> </td>
-          <td> <input type="radio" name="speedEndurance" value="5"> </td>
-        </tr>
-      </table>
 
-      Recovery: <br>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-        </tr>
-        <tr>
-          <td> <input type="radio" name="recovery" value="1"> </td>
-          <td> <input type="radio" name="recovery" value="2"> </td>
-          <td> <input type="radio" name="recovery" value="3"> </td>
-          <td> <input type="radio" name="recovery" value="4"> </td>
-          <td> <input type="radio" name="recovery" value="5"> </td>
-        </tr>
-      </table>
 
-        <input type="submit" name="" value="save">
-    </form>
+    <section class="section">
+      <div class="columns">
+        <div class="column" style="border-right: 1px solid lightgrey;">
+          <!-- adding subnav for assessments -->
+          <% include ../partials/skillsnav.ejs %>
+        </div>
+
+        <div class="column is-10">
+          <h1 class="title">fitness</h1>
+          <form  action="/skills/<%=skater.id%>/fitness?_method=PUT" method="post">
+            Speed & Endurance:<br>
+            <table>
+              <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+              </tr>
+              <tr>
+                <td> <input type="radio" name="speedEndurance" value="1"> </td>
+                <td> <input type="radio" name="speedEndurance" value="2"> </td>
+                <td> <input type="radio" name="speedEndurance" value="3"> </td>
+                <td> <input type="radio" name="speedEndurance" value="4"> </td>
+                <td> <input type="radio" name="speedEndurance" value="5"> </td>
+              </tr>
+            </table>
+
+            Recovery: <br>
+            <table>
+              <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+              </tr>
+              <tr>
+                <td> <input type="radio" name="recovery" value="1"> </td>
+                <td> <input type="radio" name="recovery" value="2"> </td>
+                <td> <input type="radio" name="recovery" value="3"> </td>
+                <td> <input type="radio" name="recovery" value="4"> </td>
+                <td> <input type="radio" name="recovery" value="5"> </td>
+              </tr>
+            </table>
+
+              <input type="submit" name="" value="save">
+          </form>
+        </div>
+      </div>
+    </section>
+
   </body>
 </html>

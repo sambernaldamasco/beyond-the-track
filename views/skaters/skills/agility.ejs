@@ -6,139 +6,153 @@
     <!-- adding privatenav partials -->
     <% include ../../partials/privatenav.ejs %>
     <!-- nav -->
-    
-    <!-- adding subnav for assessments -->
-    <% include ../partials/skillsnav.ejs %>
-    <h1>agility page</h1>
-    <form  action="/skills/<%=skater.id%>/agility?_method=PUT" method="post">
-      Lateral Movement:<br>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-        </tr>
-        <tr>
-          <td> <input type="radio" name="lateralMovement" value="1"> </td>
-          <td> <input type="radio" name="lateralMovement" value="2"> </td>
-          <td> <input type="radio" name="lateralMovement" value="3"> </td>
-          <td> <input type="radio" name="lateralMovement" value="4"> </td>
-          <td> <input type="radio" name="lateralMovement" value="5"> </td>
-        </tr>
-      </table>
 
-      Hockey Stop: <br>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-        </tr>
-        <tr>
-          <td> <input type="radio" name="hockeyStop" value="1"> </td>
-          <td> <input type="radio" name="hockeyStop" value="2"> </td>
-          <td> <input type="radio" name="hockeyStop" value="3"> </td>
-          <td> <input type="radio" name="hockeyStop" value="4"> </td>
-          <td> <input type="radio" name="hockeyStop" value="5"> </td>
-        </tr>
-      </table>
 
-      Plow Stop: <br>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-        </tr>
-        <tr>
-          <td> <input type="radio" name="plowStop" value="1"> </td>
-          <td> <input type="radio" name="plowStop" value="2"> </td>
-          <td> <input type="radio" name="plowStop" value="3"> </td>
-          <td> <input type="radio" name="plowStop" value="4"> </td>
-          <td> <input type="radio" name="plowStop" value="5"> </td>
-        </tr>
-      </table>
+    <section class="section">
+      <div class="columns">
+        <div class="column" style="border-right: 1px solid lightgrey;">
+          <!-- adding subnav for assessments -->
+          <% include ../partials/skillsnav.ejs %>
+          <!-- skills nav -->
+        </div>
+        <div class="column is-10">
+            <h1 class="title">agility</h1>
 
-      Turning Toe Stop: <br>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-        </tr>
-        <tr>
-          <td> <input type="radio" name="turningToeStop" value="1"> </td>
-          <td> <input type="radio" name="turningToeStop" value="2"> </td>
-          <td> <input type="radio" name="turningToeStop" value="3"> </td>
-          <td> <input type="radio" name="turningToeStop" value="4"> </td>
-          <td> <input type="radio" name="turningToeStop" value="5"> </td>
-        </tr>
-      </table>
+            <form  action="/skills/<%=skater.id%>/agility?_method=PUT" method="post">
+              Lateral Movement:<br>
+              <table>
+                <tr>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                </tr>
+                <tr>
+                  <td> <input type="radio" name="lateralMovement" value="1"> </td>
+                  <td> <input type="radio" name="lateralMovement" value="2"> </td>
+                  <td> <input type="radio" name="lateralMovement" value="3"> </td>
+                  <td> <input type="radio" name="lateralMovement" value="4"> </td>
+                  <td> <input type="radio" name="lateralMovement" value="5"> </td>
+                </tr>
+              </table>
 
-      Power Slide: <br>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-        </tr>
-        <tr>
-          <td> <input type="radio" name="powerSlide" value="1"> </td>
-          <td> <input type="radio" name="powerSlide" value="2"> </td>
-          <td> <input type="radio" name="powerSlide" value="3"> </td>
-          <td> <input type="radio" name="powerSlide" value="4"> </td>
-          <td> <input type="radio" name="powerSlide" value="5"> </td>
-        </tr>
-      </table>
+              Hockey Stop: <br>
+              <table>
+                <tr>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                </tr>
+                <tr>
+                  <td> <input type="radio" name="hockeyStop" value="1"> </td>
+                  <td> <input type="radio" name="hockeyStop" value="2"> </td>
+                  <td> <input type="radio" name="hockeyStop" value="3"> </td>
+                  <td> <input type="radio" name="hockeyStop" value="4"> </td>
+                  <td> <input type="radio" name="hockeyStop" value="5"> </td>
+                </tr>
+              </table>
 
-      Transistions: <br>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-        </tr>
-        <tr>
-          <td> <input type="radio" name="transitions" value="1"> </td>
-          <td> <input type="radio" name="transitions" value="2"> </td>
-          <td> <input type="radio" name="transitions" value="3"> </td>
-          <td> <input type="radio" name="transitions" value="4"> </td>
-          <td> <input type="radio" name="transitions" value="5"> </td>
-        </tr>
-      </table>
+              Plow Stop: <br>
+              <table>
+                <tr>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                </tr>
+                <tr>
+                  <td> <input type="radio" name="plowStop" value="1"> </td>
+                  <td> <input type="radio" name="plowStop" value="2"> </td>
+                  <td> <input type="radio" name="plowStop" value="3"> </td>
+                  <td> <input type="radio" name="plowStop" value="4"> </td>
+                  <td> <input type="radio" name="plowStop" value="5"> </td>
+                </tr>
+              </table>
 
-      Backwards Skating/Blocking: <br>
-      <table>
-        <tr>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-        </tr>
-        <tr>
-          <td> <input type="radio" name="backwardsSkating" value="1"> </td>
-          <td> <input type="radio" name="backwardsSkating" value="2"> </td>
-          <td> <input type="radio" name="backwardsSkating" value="3"> </td>
-          <td> <input type="radio" name="backwardsSkating" value="4"> </td>
-          <td> <input type="radio" name="backwardsSkating" value="5"> </td>
-        </tr>
-      </table>
+              Turning Toe Stop: <br>
+              <table>
+                <tr>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                </tr>
+                <tr>
+                  <td> <input type="radio" name="turningToeStop" value="1"> </td>
+                  <td> <input type="radio" name="turningToeStop" value="2"> </td>
+                  <td> <input type="radio" name="turningToeStop" value="3"> </td>
+                  <td> <input type="radio" name="turningToeStop" value="4"> </td>
+                  <td> <input type="radio" name="turningToeStop" value="5"> </td>
+                </tr>
+              </table>
 
-        <input type="submit" name="" value="save">
-    </form>
+              Power Slide: <br>
+              <table>
+                <tr>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                </tr>
+                <tr>
+                  <td> <input type="radio" name="powerSlide" value="1"> </td>
+                  <td> <input type="radio" name="powerSlide" value="2"> </td>
+                  <td> <input type="radio" name="powerSlide" value="3"> </td>
+                  <td> <input type="radio" name="powerSlide" value="4"> </td>
+                  <td> <input type="radio" name="powerSlide" value="5"> </td>
+                </tr>
+              </table>
+
+              Transistions: <br>
+              <table>
+                <tr>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                </tr>
+                <tr>
+                  <td> <input type="radio" name="transitions" value="1"> </td>
+                  <td> <input type="radio" name="transitions" value="2"> </td>
+                  <td> <input type="radio" name="transitions" value="3"> </td>
+                  <td> <input type="radio" name="transitions" value="4"> </td>
+                  <td> <input type="radio" name="transitions" value="5"> </td>
+                </tr>
+              </table>
+
+              Backwards Skating/Blocking: <br>
+              <table>
+                <tr>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                </tr>
+                <tr>
+                  <td> <input type="radio" name="backwardsSkating" value="1"> </td>
+                  <td> <input type="radio" name="backwardsSkating" value="2"> </td>
+                  <td> <input type="radio" name="backwardsSkating" value="3"> </td>
+                  <td> <input type="radio" name="backwardsSkating" value="4"> </td>
+                  <td> <input type="radio" name="backwardsSkating" value="5"> </td>
+                </tr>
+              </table>
+
+                <input type="submit" name="" value="save">
+            </form>
+
+        </div>
+      </div>
+    </section>
+
+
 
   </body>
 </html>
