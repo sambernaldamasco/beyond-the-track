@@ -3,7 +3,18 @@
   <!-- adding head from partials -->
   <% include ../partials/head.ejs %>
   <body>
-    access denied, please <a href="/sessions/new">log in</a> to have access
+    <!-- adding nav from partials -->
+    <% include ../partials/publicnav.ejs %>
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title">access denied</h1>
+        <h2 class="subtitle">
+        please <a href="/sessions/new">log in</a> to have access to this page
+        </h2>
+      </div>
+    </section>
+
 
   </body>
 </html>

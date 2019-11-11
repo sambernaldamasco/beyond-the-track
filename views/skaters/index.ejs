@@ -7,11 +7,15 @@
     <% include ../partials/privatenav.ejs %>
     <!-- nav -->
 
-    <h1>this is index for skaters</h1>
-    <ul>
-      <% for(let i =0; i < skaters.length; i++){%>
-        <li><a href="/skaters/<%=skaters[i].id%>"><%=skaters[i].name%></a></li>
-      <%}%>
-    </ul>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">skater list</h1>
+        <ul>
+          <% for(let i =0; i < skaters.length; i++){%>
+            <li><a href="/skaters/<%=skaters[i].id%>"><%=skaters[i].name%></a></li>
+          <%}%>
+        </ul>
+      </div>
+    </section>
   </body>
 </html>

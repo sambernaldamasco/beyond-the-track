@@ -6,41 +6,80 @@
     <!-- adding privatenav partials -->
     <% include ../partials/privatenav.ejs %>
     <!-- nav -->
+    <section class="section has-text-centered">
+      <div class="container">
 
-    <h1>this is a skater page</h1>
-    <h2><%=skater.name%> page</h2>
-    <h2>Stats:</h2>
-    <h3>Agility</h3>
-    <ul>
-      <li>Lateral Movement: <%=skater.skills.agility.lateralMovement%></li>
-      <li>Hockey Stop: <%=skater.skills.agility.hockeyStop%></li>
-      <li>Plow Stop: <%=skater.skills.agility.plowStop%></li>
-      <li>Turning Toe Stop: <%=skater.skills.agility.turningToeStop%></li>
-      <li>Power Slide: <%=skater.skills.agility.powerSlide%></li>
-      <li>Transitions: <%=skater.skills.agility.transitions%></li>
-      <li>Backwards Skating/Blocking: <%=skater.skills.agility.backwardsSkating%></li>
-    </ul>
-    <h3>Fitness</h3>
-    <ul>
-      <li>Speed & Endurance: <%=skater.skills.fitness.speedEndurance%></li>
-      <li>Recovery: <%=skater.skills.fitness.recovery%></li>
-    </ul>
-    <h3>Teamwork</h3>
-    <ul>
-      <li>Pack Work: <%=skater.skills.teamwork.packwork%></li>
-      <li>Stragery and Adaptability: <%=skater.skills.teamwork.strategyAdaptability%></li>
-      <li>Awareness and Communication: <%=skater.skills.teamwork.awarenessCommunication%></li>
-    </ul>
-    <h3>Coachability</h3>
-    <ul>
-      <li>Proactiveness: <%=skater.skills.coachability.proactiveness%></li>
-      <li>Mental Recovery: <%=skater.skills.coachability.mentalRecovery%></li>
-      <li>Sportspersonship: <%=skater.skills.coachability.sportspersonship%></li>
-    </ul>
+        <h1 class="title"><%=skater.name%></h1>
 
-    <form action="/skaters/<%=skater.id%>?_method=DELETE" method="POST">
-      <input type="submit" value="delete">
-    </form>
-    <a href="/skills/<%=skater.id%>/agility">Asess Skater</a>
+        <div class="level">
+          <div class="level-item">
+            <div>
+              <form action="/skaters/<%=skater.id%>?_method=DELETE" method="POST">
+                <input class="button is-dark is-outlined" type="submit" value="delete">
+              </form>
+
+            </div>
+          </div>
+
+          <div class="level-item">
+            <div>
+              <a class="button is-dark" href="/skills/<%=skater.id%>/agility">start assessment </a>
+
+            </div>
+          </div>
+        </div>
+
+        <h2 class="subtitle">
+          current stats:
+        </h2>
+
+        <h2 class="subtitle">Agility</h3>
+        <ul>
+          <li><strong>Lateral Movement:</strong> <%=skater.skills.agility.lateralMovement%></li>
+          <li><strong>Hockey Stop:</strong> <%=skater.skills.agility.hockeyStop%></li>
+          <li><strong>Plow Stop:</strong> <%=skater.skills.agility.plowStop%></li>
+          <li><strong>Turning Toe Stop:</strong> <%=skater.skills.agility.turningToeStop%></li>
+          <li><strong>Power Slide:</strong> <%=skater.skills.agility.powerSlide%></li>
+          <li><strong>Transitions:</strong> <%=skater.skills.agility.transitions%></li>
+          <li><strong>Backwards Skating/Blocking:</strong> <%=skater.skills.agility.backwardsSkating%></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section has-text-centered ">
+      <div class="container">
+        <h1 class="subtitle">Fitness</h1>
+        <ul>
+          <li><strong>Speed & Endurance:</strong> <%=skater.skills.fitness.speedEndurance%></li>
+          <li><strong>Recovery:</strong> <%=skater.skills.fitness.recovery%></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section has-text-centered">
+      <div class="container">
+        <h1 class="subtitle">Teamwork</h1>
+        <ul>
+          <li><strong>Pack Work:</strong> <%=skater.skills.teamwork.packwork%></li>
+          <li><strong>Stragery and Adaptability:</strong> <%=skater.skills.teamwork.strategyAdaptability%></li>
+          <li><strong>Awareness and Communication:</strong> <%=skater.skills.teamwork.awarenessCommunication%></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section has-text-centered">
+      <div class="container">
+        <h1 class="subtitle">Coachability</h1>
+        <ul>
+          <li><strong>Proactiveness:</strong> <%=skater.skills.coachability.proactiveness%></li>
+          <li><strong>Mental Recovery:</strong> <%=skater.skills.coachability.mentalRecovery%></li>
+          <li><strong>Sportspersonship:</strong> <%=skater.skills.coachability.sportspersonship%></li>
+        </ul>
+      </div>
+    </section>
+
+
+
+
   </body>
 </html>

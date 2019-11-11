@@ -3,9 +3,25 @@
   <!-- adding head from partials -->
   <% include ./partials/head.ejs %>
   <body>
-    <h1>beyond the track</h1>
-    <h2>welcome</h2>
-    <a href="/sessions/new">log in</a>
-    <a href="/users/new">sign up</a>
+    <!-- adding publicnav partials -->
+    <% include ./partials/publicnav.ejs %>
+    <!-- nav -->
+    <section class="section has-text-centered">
+      <div class="container">
+        <h1 class="title">hello there</h1>
+
+        <div class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <a class="button is-dark is-large" href="/sessions/new">log in</a>
+            </div>
+          </div>
+
+          <div class="level-item has-text-centered">
+            <div>
+              <a class="button is-dark is-large" href="/users/new">sign up</a>
+            </div>
+          </div>
+        </div>
   </body>
 </html>
