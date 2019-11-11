@@ -13,14 +13,27 @@ const Skater = require("../models/skaters.js");
 // -- app logic
 const logic = require("../models/logic.js");
 
+// -- seed data
+const skaterSeed = require("../models/seed.js");
+
+
 //=====================
 //  ROUTES
 //=====================
 // ============== GET ROUTES ==============
+// SEED ROUTE
+router.get('/new/seed', (req, res) => {
+  Skater.create(skaterSeed, (error, createdSkaters) => {
+    res.redirect('/skaters')
+  })
+})
+
+
+// ============== GET ROUTES ==============
 // -- index route
 router.get("/", (req, res) => {
 if (req.session.username) {
-  Skater.find({}, (error, query) => {
+  Skater.find({accepted:false}, (error, query) => {
     res.render("skaters/index.ejs", {
       skaters: query
     });
@@ -28,8 +41,13 @@ if (req.session.username) {
 } else {
   res.redirect("/sessions/accessdenied");
 }
-
 });
+
+
+// -- status route
+router.get('/status/find', (req, res) => {
+  res.render('skaters/findstatus.ejs')
+})
 
 // -- new route
 // not session protected so new skaters can add themselves for tryouts
@@ -44,6 +62,7 @@ router.get("/:id", (req, res) => {
       res.render("skaters/show.ejs", {
         skater: foundSkater
       });
+      // res.send(foundSkater)
     });
   } else {
     res.redirect('/sessions/accessdenied')
@@ -62,6 +81,19 @@ router.post("/", (req, res) => {
   Skater.create(req.body, (error, createdSkater) => {
     res.redirect('/');
   });
+});
+
+// -- getting status
+router.post("/status", (req, res) => {
+  req.body.name = req.body.name.toLowerCase()
+  Skater.find(req.body, (error, foundSkater) => {
+    // res.send(foundSkater[0])
+    // console.log(foundSkater.accepted);
+    res.render("skaters/status.ejs",
+    {
+      skater: foundSkater[0]
+    })
+  })
 });
 
 // ============== DESTROY ROUTES ==============

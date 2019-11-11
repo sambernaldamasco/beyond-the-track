@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<!-- adding head from partials -->
+<% include ../partials/head.ejs %>
+
+  <body>
+    <!-- adding publicnav partials -->
+    <% include ../partials/publicnav.ejs %>
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title">status</h1>
+
+        <% if(skater.accepted === true) { %>
+        <h2 class="subtitle">  congratulations! you have been accepted into the team </h2>
+        <%} else {%>
+        <h2 class="subtitle">  unfortunately you have not been accepted into the team for this season </h2>
+        <%} %>
+      </div>
+    </section>
+
+  </body>
+</html>

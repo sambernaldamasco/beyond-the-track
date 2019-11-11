@@ -157,10 +157,10 @@ router.put("/:id/coachability", (req, res) => {
 router.get("/:id/accepted", (req, res) => {
   Skater.findByIdAndUpdate(
     req.params.id,
-    { accepted: true },
+    { accepted: true, assessed: true },
     { new: true },
     (error, updatedData) => {
-      res.send(updatedData);
+      res.redirect('/team');
     }
   );
 });
@@ -169,10 +169,10 @@ router.get("/:id/accepted", (req, res) => {
 router.get("/:id/dismiss", (req, res) => {
   Skater.findByIdAndUpdate(
     req.params.id,
-    { accepted: false },
+    { accepted: false, assessed: true },
     { new: true },
     (error, updatedData) => {
-      res.send(updatedData);
+      res.redirect('/skaters');
     }
   );
 });

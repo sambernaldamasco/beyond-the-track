@@ -35,9 +35,9 @@ const skaterSchema = new mongoose.Schema({
       sportspersonship: {type: Number, default: 1}
     }
   },
-  isVeteran: Boolean,
-  accepted: Boolean,
-  assessed: Boolean
+  isVeteran: {type: Boolean, default: false},
+  accepted: {type: Boolean, default: false},
+  assessed: {type: Boolean, default: false}
 
 })
 
