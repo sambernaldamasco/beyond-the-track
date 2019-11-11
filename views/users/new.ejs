@@ -3,12 +3,38 @@
   <!-- adding head from partials -->
   <% include ../partials/head.ejs %>
   <body>
-    <h1>new user page</h1>
-    <form action="/users" method="POST">
-      invitation code: <input type="text" name="inviteCode"><br>
-      username: <input type="text" name="username"><br>
-      password: <input type="password" name="password"><br>
-      <input type="submit" value="register">
-    </form>
+    <!-- adding nav from partials -->
+    <% include ../partials/publicnav.ejs %>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">log in</h1>
+        <form action="/users" method="POST">
+          <div class="field">
+            <div class="control">
+              <input class="input is-medium" type="text" name="inviteCode" placeholder="invitation code"><br>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <input class="input is-medium" type="text" name="username" placeholder="username"><br>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <input class="input is-medium" type="password" name="password" placeholder="password"><br>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <input class="button is-dark" type="submit" value="register">
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
   </body>
 </html>

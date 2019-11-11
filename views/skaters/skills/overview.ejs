@@ -85,7 +85,7 @@
           </div>
         </div>
 
-        <% if(average.total >= 3) {%>
+        <% if(average.total >= 3 || skater.isVeteran === true) {%>
           <a class="button is-dark" href="/skills/<%=skater.id%>/accepted">Add to the team</a>
         <%} %>
         <a class="button is-dark is-outlined" href="/skills/<%=skater.id%>/dismiss">Dismiss skater</a>
