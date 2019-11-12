@@ -9,6 +9,7 @@ const router = express.Router();
 
 // -- db collection
 const Skater = require("../models/skaters.js");
+const Team = require("../models/teams.js");
 
 // -- app logic
 const logic = require("../models/logic.js");
@@ -18,17 +19,17 @@ const logic = require("../models/logic.js");
 //=====================
 // ============== GET ROUTES ==============
 // -- index route redirects to skaters index page
+// -- index route
 router.get("/", (req, res) => {
-  if (req.session.username) {
-    Skater.find({}, (error, query) => {
-      res.render("skaters/index.ejs", {
-        skaters: query
-      });
+if (req.session.username) {
+  Team.findById(req.session.teamId, (error, foundTeam) => {
+    res.render("skaters/index.ejs", {
+      skaters: foundTeam.skaters
     });
-  } else {
-    res.redirect('/sessions/accessdenied')
-  }
-
+  });
+} else {
+  res.redirect("/sessions/accessdenied");
+}
 });
 
 // ================== edit routes
@@ -111,7 +112,13 @@ router.put("/:id/agility", (req, res) => {
     { $set: { "skills.agility": req.body } },
     { new: true },
     (error, updatedData) => {
-      res.redirect("/skills/" + updatedData.id + "/fitness");
+      Team.findOne({'skaters._id':req.params.id}, (error, foundTeam) => {
+        foundTeam.skaters.id(req.params.id).remove()
+        foundTeam.skaters.push(updatedData)
+        foundTeam.save((error, data) => {
+          res.redirect("/skills/" + updatedData.id + "/fitness");
+        })
+      })
     }
   );
 });
@@ -123,7 +130,14 @@ router.put("/:id/fitness", (req, res) => {
     { $set: { "skills.fitness": req.body } },
     { new: true },
     (error, updatedData) => {
-      res.redirect("/skills/" + updatedData.id + "/teamwork");
+
+      Team.findOne({'skaters._id':req.params.id}, (error, foundTeam) => {
+        foundTeam.skaters.id(req.params.id).remove()
+        foundTeam.skaters.push(updatedData)
+        foundTeam.save((error, data) => {
+          res.redirect("/skills/" + updatedData.id + "/teamwork");
+        })
+      })
     }
   );
 });
@@ -135,7 +149,13 @@ router.put("/:id/teamwork", (req, res) => {
     { $set: { "skills.teamwork": req.body } },
     { new: true },
     (error, updatedData) => {
-      res.redirect("/skills/" + updatedData.id + "/coachability");
+      Team.findOne({'skaters._id':req.params.id}, (error, foundTeam) => {
+        foundTeam.skaters.id(req.params.id).remove()
+        foundTeam.skaters.push(updatedData)
+        foundTeam.save((error, data) => {
+          res.redirect("/skills/" + updatedData.id + "/coachability");
+        })
+      })
     }
   );
 });
@@ -147,7 +167,13 @@ router.put("/:id/coachability", (req, res) => {
     { $set: { "skills.coachability": req.body } },
     { new: true },
     (error, updatedData) => {
-      res.redirect("/skills/" + updatedData.id + "/overview");
+      Team.findOne({'skaters._id':req.params.id}, (error, foundTeam) => {
+        foundTeam.skaters.id(req.params.id).remove()
+        foundTeam.skaters.push(updatedData)
+        foundTeam.save((error, data) => {
+          res.redirect("/skills/" + updatedData.id + "/overview");
+        })
+      })
       console.log(updatedData);
     }
   );
@@ -160,7 +186,13 @@ router.get("/:id/accepted", (req, res) => {
     { accepted: true, assessed: true },
     { new: true },
     (error, updatedData) => {
-      res.redirect('/team');
+      Team.findOne({'skaters._id':req.params.id}, (error, foundTeam) => {
+        foundTeam.skaters.id(req.params.id).remove()
+        foundTeam.skaters.push(updatedData)
+        foundTeam.save((error, data) => {
+          res.redirect('/team');
+        })
+      })
     }
   );
 });
@@ -172,7 +204,13 @@ router.get("/:id/dismiss", (req, res) => {
     { accepted: false, assessed: true },
     { new: true },
     (error, updatedData) => {
-      res.redirect('/skaters');
+      Team.findOne({'skaters._id':req.params.id}, (error, foundTeam) => {
+        foundTeam.skaters.id(req.params.id).remove()
+        foundTeam.skaters.push(updatedData)
+        foundTeam.save((error, data) => {
+          res.redirect('/skaters');
+        })
+      })
     }
   );
 });

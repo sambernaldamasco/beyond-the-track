@@ -10,6 +10,8 @@ const router = express.Router();
 // -- db collection
 const Skater = require("../models/skaters.js");
 
+const Team = require("../models/teams.js");
+
 // -- app logic
 const logic = require("../models/logic.js");
 
@@ -23,9 +25,26 @@ const skaterSeed = require("../models/seed.js");
 // ============== GET ROUTES ==============
 // SEED ROUTE
 router.get('/new/seed', (req, res) => {
-  Skater.create(skaterSeed, (error, createdSkaters) => {
-    res.redirect('/skaters')
-  })
+  if (req.session.username) {
+    // logic.dataManipulation.seedManipulation(skaterSeed, req.session.teamId)
+    for(let i = 0; i < skaterSeed.length; i++){
+      skaterSeed[i].teamdId = req.session.teamId
+    }
+    console.log(skaterSeed);
+    Team.findById(req.session.teamId, (error, foundTeam) => {
+        Skater.create(skaterSeed, (error, createdSkater) => {
+          console.log(foundTeam);
+          // res.send(createdSkater)
+          foundTeam.skaters.push.apply(foundTeam.skaters, createdSkater)
+          foundTeam.save((error, data) => {
+            res.redirect('/')
+          })
+        })
+    })
+  } else {
+    res.redirect("/sessions/accessdenied");
+  }
+
 })
 
 
@@ -33,9 +52,9 @@ router.get('/new/seed', (req, res) => {
 // -- index route
 router.get("/", (req, res) => {
 if (req.session.username) {
-  Skater.find({accepted:false}, (error, query) => {
+  Skater.find({ teamId: req.body.teamId, accepted: false }, (error, foundSkaters) => {
     res.render("skaters/index.ejs", {
-      skaters: query
+      skaters: foundSkaters
     });
   });
 } else {
@@ -46,13 +65,32 @@ if (req.session.username) {
 
 // -- status route
 router.get('/status/find', (req, res) => {
-  res.render('skaters/findstatus.ejs')
+  Team.find({}, (error, allTeams) => {
+    res.render('skaters/findstatus.ejs',
+    {
+      teams:allTeams
+    })
+  })
 })
 
 // -- new route
 // not session protected so new skaters can add themselves for tryouts
 router.get("/new", (req, res) => {
-  res.render("skaters/new.ejs");
+  if (req.session.username) {
+    Team.find({_id: req.session.teamId}, (error, foundTeam) => {
+      res.render('skaters/new.ejs',
+      {
+        teams: foundTeam
+      })
+    })
+  } else {
+    Team.find({}, (error, allTeams) => {
+      res.render('skaters/new.ejs',
+      {
+        teams:allTeams
+      })
+    })
+  }
 });
 
 // -- show route
@@ -74,20 +112,30 @@ router.get("/:id", (req, res) => {
 // posting the info from the form on the route NEW
 router.post("/", (req, res) => {
   // res.send(req.body.name)
-  if (req.body.veteran === "on") {
+  const teamId = req.body.teamId
+  if (req.body.isVeteran === "on") {
     req.body = logic.dataManipulation.veteranSkater(req.body);
+    req.body.teamId = teamId
   }
+  // console.log(req.body);
   // res.send(req.body)
-  Skater.create(req.body, (error, createdSkater) => {
-    res.redirect('/');
-  });
+  Team.findById(req.body.teamId, (error, foundTeam) => {
+    console.log(foundTeam);
+      Skater.create(req.body, (error, createdSkater) => {
+        // res.send(createdSkater)
+        foundTeam.skaters.push(createdSkater)
+        foundTeam.save((error, data) => {
+          res.redirect('/')
+        })
+      })
+  })
 });
 
 // -- getting status
 router.post("/status", (req, res) => {
   req.body.name = req.body.name.toLowerCase()
   Skater.find(req.body, (error, foundSkater) => {
-    // res.send(foundSkater[0])
+    // res.send(foundSkater)
     // console.log(foundSkater.accepted);
     res.render("skaters/status.ejs",
     {
@@ -100,7 +148,12 @@ router.post("/status", (req, res) => {
 // it takes the ID from the url send in the form+submit button
 router.delete("/:id", (req, res) => {
   Skater.findByIdAndRemove(req.params.id, (error, deletedData) => {
-    res.redirect("/skaters");
+    Team.findOne({'skaters._id':req.params.id}, (error, foundTeam) => {
+      foundTeam.skaters.id(req.params.id).remove()
+      foundTeam.save((error, data) => {
+        res.redirect("/skaters");
+      })
+    })
   });
 });
 

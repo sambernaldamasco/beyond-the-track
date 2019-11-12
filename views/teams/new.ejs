@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <!-- adding head from partials -->
+  <% include ../partials/head.ejs %>
+  <body>
+    <!-- adding nav from partials -->
+    <% include ../partials/publicnav.ejs %>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">sign up</h1>
+        <form action="/team" method="POST">
+
+          <div class="field">
+            <div class="control">
+              <input class="input is-medium" type="text" name="name" placeholder="team name"><br>
+            </div>
+          </div>
+
+
+          <div class="field">
+            <div class="control">
+              <input class="input is-medium" type="text" name="inviteCode" placeholder="invitation code"><br>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <input class="button is-dark" type="submit" value="register">
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </body>
+</html>

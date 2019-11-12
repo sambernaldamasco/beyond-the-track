@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 //=====================
 
 const skaterSchema = new mongoose.Schema({
-  name:{type: String, unique: true},
+  name: String,
   skills: {
     agility:{
       lateralMovement: {type: Number, default: 1},
@@ -37,7 +37,8 @@ const skaterSchema = new mongoose.Schema({
   },
   isVeteran: {type: Boolean, default: false},
   accepted: {type: Boolean, default: false},
-  assessed: {type: Boolean, default: false}
+  assessed: {type: Boolean, default: false},
+  teamId: String
 
 })
 

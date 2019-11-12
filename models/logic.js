@@ -93,14 +93,19 @@ const logic = {
             mentalRecovery: 3,
             sportspersonship: 3
           }
-        }
+        },
+        isVeteran: true,
       }
     return data
     }, // end of the function
 
-    // dataCheck (data) = {
-    //
-    // }
+    seedManipulation (data, teamId) {
+      for(let i = 0; i < data.length; i++){
+        data[i].teamdId = teamId
+      }
+
+      return data
+    }
   } //end of the dataManipulation object
 }
 

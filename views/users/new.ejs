@@ -7,8 +7,21 @@
     <% include ../partials/publicnav.ejs %>
     <section class="section">
       <div class="container">
-        <h1 class="title">log in</h1>
+        <h1 class="title">sign up</h1>
+
         <form action="/users" method="POST">
+          <div class="field">
+            <div class="control">
+              <div class="select">
+                <select name="teamId">
+                    <% for(let i = 0; i < teams.length; i++) { %>
+                        <option value="<%=teams[i].id%>"><%=teams[i].name%></option>
+                    <% } %>
+                </select><br/>
+              </div>
+            </div>
+          </div>
+
           <div class="field">
             <div class="control">
               <input class="input is-medium" type="text" name="inviteCode" placeholder="invitation code"><br>

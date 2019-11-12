@@ -10,6 +10,9 @@ const router = express.Router();
 // -- db collection
 const Skater = require("../models/skaters.js");
 
+// -- db collection
+const Team = require("../models/teams.js");
+
 // -- app logic
 const logic = require("../models/logic.js");
 
@@ -20,9 +23,11 @@ const logic = require("../models/logic.js");
 // -- index
 router.get("/", (req, res) => {
   if (req.session.username) {
-    Skater.find({ accepted: true }, null, (error, query) => {
-      res.render("skaters/team/index.ejs", {
-        skaters: query
+    Skater.find({ teamId: req.body.teamId, accepted:true }, (error, foundSkaters) => {
+
+      // res.send(query)
+      res.render("teams/index.ejs", {
+        skaters: foundSkaters
       });
     });
   } else {
@@ -30,4 +35,17 @@ router.get("/", (req, res) => {
   }
 });
 
+router.get('/new', (req, res) => {
+  res.render("teams/new.ejs")
+})
+
+
+// ============== POST ROUTES ==============
+router.post('/', (req, res) => {
+  // res.send(req.body)
+  Team.create(req.body, (error, createdTeam) => {
+    res.redirect('/')
+    // console.log(error);
+  })
+})
 module.exports = router;

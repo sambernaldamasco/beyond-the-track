@@ -9,19 +9,32 @@
       <div class="container">
         <h1 class="title">log in</h1>
         <form action="/users" method="POST">
+
           <div class="field">
             <div class="control">
-              <input class="input is-danger is-medium" type="text" name="inviteCode" placeholder="invitation code"><br>
+              <div class="select">
+                <select name="teamId">
+                    <% for(let i = 0; i < teams.length; i++) { %>
+                        <option value="<%=teams[i].id%>"><%=teams[i].name%></option>
+                    <% } %>
+                </select><br/>
+              </div>
+            </div>
+
+            
+          <div class="field">
+            <div class="control">
+              <input class="input is-danger is-medium" type="text" name="inviteCode" placeholder="invitation code" value="<%=code%>"><br>
             </div>
             <p class="help is-danger">invite code is invalid</p>
           </div>
 
           <div class="field">
             <div class="control">
-              <input class="input is-medium" type="text" name="username" placeholder="username"><br>
+              <input class="input is-medium" type="text" name="username" value="<%=username%>" placeholder="username"><br>
             </div>
           </div>
-          
+
           <div class="field">
             <div class="control">
               <input class="input is-medium" type="password" name="password" placeholder="password"><br>
