@@ -23,8 +23,8 @@ const logic = require("../models/logic.js");
 // -- index
 router.get("/", (req, res) => {
   if (req.session.username) {
-    Skater.find({ teamId: req.body.teamId, accepted:true }, (error, foundSkaters) => {
-
+    Skater.find({ teamId: req.session.teamId, accepted:true }, (error, foundSkaters) => {
+      console.log(foundSkaters);
       // res.send(query)
       res.render("teams/index.ejs", {
         skaters: foundSkaters

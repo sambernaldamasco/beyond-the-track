@@ -52,7 +52,7 @@ router.get('/new/seed', (req, res) => {
 // -- index route
 router.get("/", (req, res) => {
 if (req.session.username) {
-  Skater.find({ teamId: req.body.teamId, accepted: false }, (error, foundSkaters) => {
+  Skater.find({ teamId: req.session.teamId, accepted: false }, (error, foundSkaters) => {
     res.render("skaters/index.ejs", {
       skaters: foundSkaters
     });
